@@ -1,4 +1,6 @@
 
+// TODO track number of guesses
+
 var convertTargetWordDict = function(word) {
   var targetWordDict = {};
   for( var i=0; i < word.length; i++) {
@@ -14,9 +16,10 @@ var convertTargetWordDict = function(word) {
 
 var isGuessValid = function(guess) {
   guess = $.trim(guess);
-
-  if( guess.length > 1 || guess.length < 1 || !isNaN(guess)) {
-    $(".flash-message").text("Choose one and only one letter");
+  //regex of all punctuation...maybe
+  punct = /[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/
+  if( guess.length > 1 || guess.length < 1 || !isNaN(guess) || guess.search(punct) !== -1 ){
+    $(".alert").text("Choose one and only one letter");
     return(false);
   }
   return(true);
@@ -32,14 +35,14 @@ var displayJudgeMessage = function(goodGuess) {
 
 var clearMessages = function() {
   $(".letter-input").val("");
-  $(".flash-message").text("");
+  $(".alert").text("");
   $(".judgement").text("");
 }
 
 var initializeBlanks = function(word) {
   var s = "";
   for(var i=0; i < word.length; i++) {
-    s = s + "<div class='blank blank-" + i + "'>&nbsp;_&nbsp;</div>";
+    s = s + "<div class='blank blank-" + i + "'>_</div>";
   }
   return(s);
 }
@@ -61,7 +64,7 @@ $("#guess-a-letter-button").on("click", function(e){
   if (!isGuessValid(guess)) {
     return("");
   }
-
+  guess = guess.toLowerCase();
   letterIsInWord(guess, lettersDict) ? guessedLettersRight.push(guess) : guessedLettersWrong.push(guess);
 
   $(".guessed-letters-wrong>.letters").text(guessedLettersWrong);
@@ -73,7 +76,7 @@ $("#guess-a-letter-button").on("click", function(e){
   if(goodGuess) {
     indices = lettersDict[guess];
     for(var i=0; i < indices.length; i++) {
-      $(".blank-" + indices[i]).text("  " + guess + "  ");
+      $(".blank-" + indices[i]).text(guess);
     }
   }
 

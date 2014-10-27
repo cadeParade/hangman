@@ -1,3 +1,62 @@
+<!-- New bootstrap version -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>So Much Hangman</title>
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Let's play hangman!</h1>
+        <div class="blanks"></div>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-4">
+          <h4>Guess a letter!</h4>
+          <div class="alert"></div>
+          <form class="guess-a-letter" method="POST">
+            <input class="letter-input" type="text" name="guessed-letter" required autofocus />
+            <button id='guess-a-letter-button' class="btn btn-primary btn-xs" type="submit">Guess!</button>
+          </form>
+        </div>
+
+        <div class="col-lg-4">
+          <h4>Letter Gallery</h4>
+          <div class="letter-list guessed-letters-wrong">
+            <span class="label label-danger">Incorrect</span><br/>
+            <div class="letters letter-list"></div>
+          </div>
+          <br/>
+          <div class="letter-list guessed-letters-right">
+            <span class="label label-success">Correct</span><br/>
+            <div class="letters letter-list"></div>
+          </div>
+      </div>
+        <div class="col-lg-4">
+        lol third column
+        </div>
+
+    </div> 
+
+
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/hangman.js"></script>
+
+  </body>
+</html>
+
+<!-- ugly simple version
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,13 +65,13 @@
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
   </head>
   <body>
-    <div class="left-column">
+    <div class="well left-column">
       Let's play a game of hangman!<br/>
       Guess a letter!
-      <div class="flash-message"></div>
+      <div class="alert"></div>
       <form class="guess-a-letter" method="POST">
-          <input class="letter-input" type="text" name="guessed-letter" required autofocus /><br/>
-          <button id='guess-a-letter-button' class="btn btn-lg btn-primary btn-block" type="submit">Guess!</button>
+          <input class="letter-input" type="text" name="guessed-letter" required autofocus />
+          <button id='guess-a-letter-button' class="btn btn-primary" type="submit">Guess!</button>
       </form>
       <br/>
       <div class="letter-list guessed-letters-wrong">WRONG LETTERS
@@ -31,4 +90,4 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="static/js/hangman.js"></script>
   </body>
-</html>
+</html> -->
