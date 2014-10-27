@@ -12,7 +12,6 @@ def index():
     """This is the 'cover' page of the ubermelon site"""
     return render_template("index.html")
 
-@app.route("/handle_guess")
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, port=port)

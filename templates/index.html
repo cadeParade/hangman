@@ -1,134 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Hangman!</title>
-</head>
-<body>
-<style>
-  .left-column {
-    display: inline-block;
-    width: 30%;
-  }
-  .right-column {
-    display: inline-block;
-    width: 40%;
-  }
-  .blank {
-    display: inline-block;
-  }
-  .letter-list {
-    display: inline-block;
-  }
-  .letters {
-    margin-left: 30px;
-  }
-</style>
-<div class="left-column">
-  Let's play a game of hangman!<br/>
-  Guess a letter!
-  <div class="flash-message"></div>
-  <form class="guess-a-letter" method="POST">
-      <input class="letter-input" type="text" name="guessed-letter" required autofocus /><br/>
-      <button id='guess-a-letter-button' class="btn btn-lg btn-primary btn-block" type="submit">Guess!</button>
-  </form>
-  <br/>
-  <div class="letter-list guessed-letters-wrong">WRONG LETTERS<div class="letters letter-list"></div></div><br/>
-  <div class="letter-list guessed-letters-right">RIGHT LETTERS<div class="letters letter-list"></div></div>
-</div>
-<div class="right-column">
-  <div class="blanks">
-  </div>
-  <div class="judgement"></div>
-</div>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script>
-
-  var convertTargetWordDict = function(word) {
-    var targetWordDict = {};
-    for( var i=0; i < word.length; i++) {
-      if( word[i] in targetWordDict) {
-        targetWordDict[word[i]].push(i);
-      }
-      else {
-      targetWordDict[word[i]] = [i]
-      }
-    }
-    return(targetWordDict)
-  }
-
-  var isGuessValid = function(guess) {
-    guess = $.trim(guess);
-
-    if( guess.length > 1 || guess.length < 1 || !isNaN(guess)) {
-      $(".flash-message").text("Choose one and only one letter");
-      return(false);
-    }
-    return(true);
-  }
-
-  var letterIsInWord = function(letter, dict) {
-    return ((letter in dict) ? true : false);
-  }
-
-  var displayJudgeMessage = function(goodGuess) {
-    $(".judgement").text(goodGuess ? "CORRECT" : "INCORRECT");
-  }
-
-  var clearMessages = function() {
-    $(".letter-input").val("");
-    $(".flash-message").text("");
-    $(".judgement").text("");
-  }
-
-  var initializeBlanks = function(word) {
-    var s = "";
-    for(var i=0; i < word.length; i++) {
-      s = s + "<div class='blank blank-" + i + "'>&nbsp;_&nbsp;</div>";
-    }
-    return(s);
-  }
-
-  var theyWon = function(guessedLettersRight, lettersDict) {
-    return (guessedLettersRight.length === Object.keys(lettersDict).length ? true : false);
-    }
-
-  var guessedLettersWrong = [];
-  var guessedLettersRight = [];
-  var targetWord = "balloon";
-  var lettersDict = convertTargetWordDict(targetWord);
-  $(".blanks").html(initializeBlanks(targetWord));
-
-  $("#guess-a-letter-button").on("click", function(e){
-    e.preventDefault();
-    var guess = $(".letter-input").val();
-    clearMessages();
-    if (!isGuessValid(guess)) {
-      return("");
-    }
-
-    letterIsInWord(guess, lettersDict) ? guessedLettersRight.push(guess) : guessedLettersWrong.push(guess);
-
-    $(".guessed-letters-wrong>.letters").text(guessedLettersWrong);
-    $(".guessed-letters-right>.letters").text(guessedLettersRight);
-
-    goodGuess = letterIsInWord(guess, lettersDict)
-    displayJudgeMessage(goodGuess);
-    var indices;
-    if(goodGuess) {
-      indices = lettersDict[guess];
-      for(var i=0; i < indices.length; i++) {
-        $(".blank-" + indices[i]).text("  " + guess + "  ");
-      }
-    }
-
-    console.log(theyWon(guessedLettersRight, lettersDict))
-    if(theyWon(guessedLettersRight, lettersDict)) {
-      $('body').text('YOU WON');
-    }
-
-  })
-
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hangman!</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  </head>
+  <body>
+    <div class="left-column">
+      Let's play a game of hangman!<br/>
+      Guess a letter!
+      <div class="flash-message"></div>
+      <form class="guess-a-letter" method="POST">
+          <input class="letter-input" type="text" name="guessed-letter" required autofocus /><br/>
+          <button id='guess-a-letter-button' class="btn btn-lg btn-primary btn-block" type="submit">Guess!</button>
+      </form>
+      <br/>
+      <div class="letter-list guessed-letters-wrong">WRONG LETTERS
+        <div class="letters letter-list"></div>
+      </div>
+      <br/>
+      <div class="letter-list guessed-letters-right">RIGHT LETTERS
+        <div class="letters letter-list"></div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="blanks">
+      </div>
+      <div class="judgement"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/hangman.js"></script>
+  </body>
 </html>
