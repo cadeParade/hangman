@@ -17,7 +17,7 @@ ex: my_function('a', 'balloon') returns true, my_function('x', 'balloon') return
   a number,
   extra credit: punctuation
 
-4. Build a function that takes a word and generates one div (in string form) for each letter in the word. Inside each div is an underscore with spaces around it -- " _ ". EX: my_function('cat') returns "<div> _ </div><div> _ </div><div> _ </div>"
+4. Build a function that takes a word and generates one div (in string form) for each letter in the word. Inside each div is an underscore with spaces around it -- " _ ". EX: my_function('cat') returns `"<div> _ </div><div> _ </div><div> _ </div>"`
 
 
 
