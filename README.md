@@ -35,8 +35,9 @@ Goal -- Make a page that looks like this![layout](http://i.imgur.com/hrXTtXc.png
 
 HTML + JS
 //IN PROGRESS
-2. add event handler to button that pops up alert
-3. print value of text field to alert
-6. If the input is invalid, print a message to the screen saying so
-7. if the input is valid, add it to a list of guessed letters
-8. display the list of guessed letters on the page
+
+1. add event handler to button that pops up alert
+2. print value of text field to alert
+3. If the input is invalid, print a message to the screen saying so
+4. if the input is valid, add it to a list of guessed letters
+5. display the list of guessed letters on the page
