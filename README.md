@@ -31,7 +31,7 @@ Goal -- Make a page that looks like this![layout](http://i.imgur.com/hrXTtXc.png
 3. Download a copy of boostrap css, move the css file to your project directory, and point the css style tag (in html) to your css file. 
 4. Open the html file in the browser again. If your page looks different, you've found your bootstrap css. If it doesn't, keep trying.
 5. If it looks different but not exactly like the bootstrap template, notice that there's another file linked called `jumbotron-narrow.css"`. Find that from the bootstrap template view-source page and copy that into your own `jumbotron-narrow.css` file. 
-6. Check out the components page of bootstrap and check out all the awesome stuff. Labels and buttons were used on this page. Make them look like the above screenshot.
+6. Check out the components page of bootstrap and check out all the awesome stuff. Labels and buttons were used on this page. Make them look like the above screenshot. If you're stuck on the 2 vs. 3 columns, check out this page: http://getbootstrap.com/examples/grid/
 
 HTML + JS
 //IN PROGRESS
